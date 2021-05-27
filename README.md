@@ -1,5 +1,7 @@
 # NDJSON
- 
+NDJSON stringify / parse in JavaScript ES module for browsers and Deno
+
+## usage
 ```javascript
 import { NDJSON } from "https://taisukef.github.io/NDJSON/NDJSON.js";
 

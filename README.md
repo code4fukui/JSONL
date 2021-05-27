@@ -19,5 +19,7 @@ console.log(data2);
 [ndjson](http://ndjson.org/)
 
 ## see also
-[ndjsonとは? - Qiita](https://qiita.com/suin/items/246691382ea2a2b22031)
+[ndjsonとは? - Qiita](https://qiita.com/suin/items/246691382ea2a2b22031)  
+[日本政府からNDJSONで公開された都道府県別ワクチン接種数オープンデータで接種率表示](https://fukuno.jig.jp/3228)  
+
 

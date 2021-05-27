@@ -5,6 +5,7 @@ import { NDJSON } from "https://taisukef.github.io/NDJSON/NDJSON.js";
 
 const data = [
   { a: 1, b: "abc" },
+  { a: 2, b: "def" },
 ];
 const s = NDJSON.stringify(data);
 console.log(s);

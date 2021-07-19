@@ -8,7 +8,7 @@ const NDJSON = {
   },
   parse(s) {
     return JSON.parse("[" + s.trim().split("\n").join(",") + "]");
-  }
+  },
 };
 
 export { NDJSON };

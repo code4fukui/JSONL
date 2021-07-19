@@ -4,6 +4,8 @@ NDJSON stringify / parse in JavaScript ES module for browsers and Deno
 
 ## usage
 
+static stringify & parse
+
 ```javascript
 import { NDJSON } from "https://taisukef.github.io/NDJSON/NDJSON.js";
 
@@ -15,6 +17,33 @@ const s = NDJSON.stringify(data);
 console.log(s);
 const data2 = NDJSON.parse(s);
 console.log(data2);
+```
+
+
+stream write
+```js
+import { NDJSONWriter } from "https://taisukef.github.io/NDJSON/NDJSONWriter.js";
+
+const w = new NDJSONWriter("test.ndjson");
+await w.writeRecord({ name: "abc", value: 123 });
+await w.writeRecord({ name: "def", value: 456 });
+w.close();
+```
+
+stream read
+
+```js
+import { NDJSONReader } from "https://taisukef.github.io/NDJSON/NDJSONReader.js";
+
+const r = new NDJSONReader("test.ndjson");
+for (;;) {
+  const data = await r.readRecord();
+  if (data == null) {
+    break;
+  }
+  console.log(data);
+}
+r.close();
 ```
 
 ## reference

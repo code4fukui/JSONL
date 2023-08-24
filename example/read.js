@@ -1,6 +1,6 @@
-import { NDJSONReader } from "https://taisukef.github.io/NDJSON/NDJSONReader.js";
+import { JSONLReader } from "../JSONLReader.js";
 
-const r = new NDJSONReader("test.ndjson");
+const r = new NDJSONReader("test.jsonl");
 for (;;) {
   const data = await r.readRecord();
   if (data == null) {

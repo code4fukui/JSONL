@@ -1,25 +1,41 @@
-# NDJSON
+# JSONL
 
-NDJSON stringify / parse in JavaScript ES module for browsers and Deno
+JSONL is a [JSON Lines](https://jsonlines.org/) library, stringify / parse / streaming read and write as JavaScript ES modules for browsers and Deno.
 
 ## usage
 
-stream write
-```js
-import { NDJSONWriter } from "https://taisukef.github.io/NDJSON/NDJSONWriter.js";
+### stringify & parse
 
-const w = new NDJSONWriter("test.ndjson");
+```javascript
+import { JSONL } from "https://code4fukui.github.io/JSONL/JSONL.js";
+
+const data = [
+  { a: 1, b: "abc" },
+  { a: 2, b: "def" },
+];
+const s = JSONL.stringify(data);
+console.log(s);
+const data2 = JSONL.parse(s);
+console.log(data2);
+```
+
+### stream write
+
+```js
+import { JSONLWriter } from "https://code4fukui.github.io/JSONL/JSONLWriter.js";
+
+const w = new JSONLWriter("test.jsonl");
 await w.writeRecord({ name: "abc", value: 123 });
 await w.writeRecord({ name: "def", value: 456 });
 w.close();
 ```
 
-stream read
+### stream read
 
 ```js
-import { NDJSONReader } from "https://taisukef.github.io/NDJSON/NDJSONReader.js";
+import { JSONLReader } from "https://code4fukui.github.io/JSONL/JSONLReader.js";
 
-const r = new NDJSONReader("test.ndjson");
+const r = new JSONLReader("test.jsonl");
 for (;;) {
   const data = await r.readRecord();
   if (data == null) {
@@ -30,26 +46,13 @@ for (;;) {
 r.close();
 ```
 
-static stringify & parse
-
-```javascript
-import { NDJSON } from "https://taisukef.github.io/NDJSON/NDJSON.js";
-
-const data = [
-  { a: 1, b: "abc" },
-  { a: 2, b: "def" },
-];
-const s = NDJSON.stringify(data);
-console.log(s);
-const data2 = NDJSON.parse(s);
-console.log(data2);
-```
-
 ## reference
 
-[ndjson](http://ndjson.org/)
+- officital spec [JSON Lines](https://jsonlines.org/)
+- similar spec [ndjson](http://ndjson.org/)
+- forked from [NDJSON](https://github.com/taisukef/NDJSON/)
 
 ## see also
 
-[ndjsonとは? - Qiita](https://qiita.com/suin/items/246691382ea2a2b22031)\
-[日本政府からNDJSONで公開された都道府県別ワクチン接種数オープンデータで接種率表示](https://fukuno.jig.jp/3228)
+- [ChatGPTのファインチューニング用JSONLデータをCSVから生成する](https://fukuno.jig.jp/4047)
+- [日本政府からNDJSONで公開された都道府県別ワクチン接種数オープンデータで接種率表示](https://fukuno.jig.jp/3228)

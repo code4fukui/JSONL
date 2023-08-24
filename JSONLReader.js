@@ -1,6 +1,6 @@
 import { LineReader } from "https://code4fukui.github.io/line-rw/LineReader.js";
 
-class NDJSONReader {
+export class JSONLReader {
   constructor(fn) {
     this.r = new LineReader(fn);
   }
@@ -15,5 +15,3 @@ class NDJSONReader {
     this.r.close();
   }
 }
-
-export { NDJSONReader };

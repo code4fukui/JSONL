@@ -1,4 +1,4 @@
-const NDJSON = {
+export const JSONL = {
   stringify(data) {
     const s = [];
     for (const d of data) {
@@ -10,5 +10,3 @@ const NDJSON = {
     return JSON.parse("[" + s.trim().split("\n").join(",") + "]");
   },
 };
-
-export { NDJSON };

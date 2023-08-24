@@ -1,6 +1,6 @@
 import { LineWriter } from "https://code4fukui.github.io/line-rw/LineWriter.js";
 
-class NDJSONWriter {
+export class JSONLWriter {
   constructor(fn) {
     this.w = new LineWriter(fn);
   }
@@ -11,5 +11,3 @@ class NDJSONWriter {
     this.w.close();
   }
 }
-
-export { NDJSONWriter };

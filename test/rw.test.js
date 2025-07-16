@@ -19,3 +19,30 @@ Deno.test("test2", async () => {
     '{"name":"abc","value":123}\n{"name":"def","value":456}\n',
   );
 });
+Deno.test("append", async () => {
+  const fn = "test_append.jsonl";
+  try {
+    await Deno.remove(fn);
+  } catch (e) {
+  }
+  const append = true;
+  const w = new JSONLWriter(fn, append);
+  await w.writeRecord({ name: "abc", value: 123 });
+  w.close();
+  const w2 = new JSONLWriter(fn, append);
+  await w2.writeRecord({ name: "def", value: 456 });
+  w2.close();
+
+  const r = new JSONLReader(fn);
+  t.assertEquals(await r.readRecord(), { name: "abc", value: 123 });
+  t.assertEquals(await r.readRecord(), { name: "def", value: 456 });
+  t.assertEquals(await r.readRecord(), null);
+  r.close();
+
+  t.assertEquals(
+    await Deno.readTextFile(fn),
+    `{"name":"abc","value":123}
+{"name":"def","value":456}
+`,
+  );
+});

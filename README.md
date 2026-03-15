@@ -1,5 +1,7 @@
 # JSONL
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 JSONL is a [JSON Lines](https://jsonlines.org/) library, providing stringify/parse/streaming read and write functionality as JavaScript ES modules for browsers and Deno.
 
 ## Features

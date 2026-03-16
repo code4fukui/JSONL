@@ -51,4 +51,4 @@ r.close();
 ```
 
 ## License
-MIT
+MIT License — see [LICENSE](LICENSE).
